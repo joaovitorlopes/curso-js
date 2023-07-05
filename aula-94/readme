@@ -13,3 +13,11 @@
 // Criar o index.js
 
 // Adiciona execução do webpack no "package.json"
+
+
+// Corrigir core-js de v2 para ultima versão
+// Excluir "core-js" e "regenerator-runtime" do dev-dependences no "package.json"
+// Excluir pasta node_modules
+
+// executar o comando:
+//npm i core-js regenerator-runtime
