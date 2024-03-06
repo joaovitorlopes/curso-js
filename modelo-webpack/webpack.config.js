@@ -1,12 +1,11 @@
-const path = require('path'); // CommonJS
+const path = require('path');
 
-//Exportar para ser acessível de fora do arquivo:
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: './src/main.js',
     output: {
         path: path.resolve(__dirname, 'public', 'assets', 'js'),
-        filename: 'bundle.js',
+        filename: 'bundle.js'
     },
     module: {
         rules: [{
@@ -23,5 +22,5 @@ module.exports = {
             use: ['style-loader', 'css-loader']
         }]
     },
-    devtool: 'source-map',
+    devtool: 'source-map'
 };
