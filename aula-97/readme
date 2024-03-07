@@ -1,0 +1,26 @@
+// Criar package.json:
+//npm init -y
+
+// baixando dependencias:
+//npm i --save-dev @babel/preset-env @babel/core @babel/cli babel-loader webpack webpack-cli regenerator-runtime core-js@2
+
+// Para baixar a pasta "node_modules":
+//npm install
+
+// Criar webpack.config.js
+
+// Criar a pasta src
+// Criar o index.js
+
+// Adiciona execução do webpack no "package.json"
+
+
+// Corrigir core-js de v2 para ultima versão
+// Excluir "core-js" e "regenerator-runtime" do dev-dependences no "package.json"
+// Excluir pasta node_modules
+
+// executar o comando:
+//npm i core-js regenerator-runtime
+
+// instalar style-loader e css-loader
+//npm install style-loader css-loader
