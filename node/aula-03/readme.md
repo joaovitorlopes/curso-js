@@ -1,0 +1,8 @@
+- For install dependencies in DEV use "npm install dependence_name --save-dev".
+- For install dependencies in PROD use"npm install dependence_name --save-prod".
+- For uninstall dependencies use "npm uninstall dependence_name".
+- For list dependencies installed use "npm ls".
+- For check not updated packages use "npm outdated".
+- In the dependencies versions the '^' means MINOR and PATCH will be UPDATED.
+- In the dependencies versions the '~' means that ONLY the PATCH will be UPDATED.
+- If want the dependencies in especific version, use "npm install dependence_name@version"(express@4.x) or -E.
