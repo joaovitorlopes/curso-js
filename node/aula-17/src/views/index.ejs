@@ -1,0 +1,15 @@
+<%- include('includes/head'); %>
+
+<section class="container">
+    <h1><%= localVariable %></h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et quam doloribus explicabo debitis, illo soluta fugiat cupiditate repellendus distinctio odio quia in itaque quis ea ullam placeat magnam repudiandae dolore.</p>
+
+    <form action="/" method="post">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <label for="customer">Customer name</label>
+        <input type="text" id="customer" name="customer">
+        <button type="submit">Enviar</button>
+    </form>
+</section>
+
+<%- include('includes/footer'); %>
