@@ -1,25 +1,32 @@
+// environment variables
 require('dotenv').config();
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+// mongoose -> modeling the database(schema)
 mongoose.connect(process.env.CONNECTIONSTRING)
     .then(() => {
-        app.emit('ready');
+        app.emit('ready'); // send the ready signal
     })
     .catch(e => console.log(e));
-const session = require('express-session');
-const MongoStore = require('connect-mongo');
-const flash = require('connect-flash');
-const routes = require('./routes');
+const session = require('express-session'); // identify the client web browser (cookie)
+const MongoStore = require('connect-mongo'); // save sessions in database
+const flash = require('connect-flash'); // self-destructing messages after reading (feedback)
+const routes = require('./routes'); // aplication routes
 const path = require('path');
-const helmet = require('helmet');
-const csrf = require('csurf');
+const helmet = require('helmet'); // security of aplication
+const csrf = require('csurf'); // csrf tokens for forms (security)
+
+// importing middlewares -> functions that are performed on routes
 const { middlewareGlobal, checkCsrfError, csrfMiddleware } = require('./src/middlewares/middleware');
 
 app.use(helmet());
-app.use(express.urlencoded({ extended: true })); //Handling POST method
-app.use(express.static(path.resolve(__dirname, 'public')));
+//Handling POST method
+app.use(express.urlencoded({ extended: true })); //POST forms in application
+app.use(express.json()); // JSON parsing for application
+app.use(express.static(path.resolve(__dirname, 'public'))); // Acess static files in application (img, css, js)
 
+// -- CONFIGS --
 const sessionOptions = session({
     secret: '9iN5lUz1Ewr7eSiXP1vxVw6MkiEvab7DJKg1w6ArKylgAEPHuf',
     resave: false,
@@ -34,16 +41,18 @@ const sessionOptions = session({
 app.use(sessionOptions);
 app.use(flash());
 
-app.set('views', path.resolve(__dirname, 'src', 'views'));
-app.set('view engine', 'ejs');
+app.set('views', path.resolve(__dirname, 'src', 'views')); // render files
+app.set('view engine', 'ejs'); // engine to render html
 
-app.use(csrf());
+app.use(csrf()); // csrf tokens
 // Our own middleware
 app.use(middlewareGlobal);
 app.use(checkCsrfError);
 app.use(csrfMiddleware);
+// calling routes
 app.use(routes);
 
+// ready to listen requests
 app.on('ready', () => {
     app.listen(5000, () => {
         console.log('The server has been started in the port 5000');

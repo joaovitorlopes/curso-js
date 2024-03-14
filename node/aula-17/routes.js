@@ -5,11 +5,10 @@ const contactController = require('./src/controllers/contactController');
 
 
 // Home routes
-route.get('/', homeController.initialPage);
-route.post('/', homeController.postHandling);
+route.get('/', homeController.initialPage); // routes to respond to the client
+route.post('/', homeController.postHandling); // routes to respond to the client
 
 // Contact routes
 route.get('/contact', contactController.initialPage);
 
 module.exports = route;
- 
