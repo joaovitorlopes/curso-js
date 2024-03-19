@@ -1,0 +1,9 @@
+node_modules
+.env
+*.jpg
+*.png
+*.gif
+junk.js
+pul-server.sh
+sync.sh
+db.sqlite
