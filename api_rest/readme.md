@@ -7,6 +7,7 @@
 - npm i sequelize
 - npm i mariadb
 - npm i sequelize-cli --save-dev
+- npm i bcryptjs
 
 # sequelize commands:
 - "npx sequelize migration:create --name=NAME" to create an migration
