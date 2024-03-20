@@ -8,6 +8,7 @@
 - npm i mariadb
 - npm i sequelize-cli --save-dev
 - npm i bcryptjs
+- npm i jsonwebtoken
 
 # sequelize commands:
 - "npx sequelize migration:create --name=NAME" to create an migration
