@@ -4,7 +4,8 @@ class UserController {
   async store(request, response) {
     try {
       const newUser = await User.create(request.body);
-      return response.json(newUser);
+      const { id, name, email } = newUser;
+      return response.json({ id, name, email });
     } catch (e) {
       return response.status(400).json({
         errors: e.errors.map((err) => err.message),
@@ -15,9 +16,7 @@ class UserController {
   // Index
   async index(request, response) {
     try {
-      const users = await User.findAll();
-      console.log('USER ID', request.userId);
-      console.log('USER EMAIL', request.userEmail);
+      const users = await User.findAll({ attributes: ['id', 'name', 'email'] });
       return response.json(users);
     } catch (e) {
       return response.json(null);
@@ -28,7 +27,9 @@ class UserController {
   async show(request, response) {
     try {
       const user = await User.findByPk(request.params.id);
-      return response.json(user);
+
+      const { id, name, email } = user;
+      return response.json({ id, name, email });
     } catch (e) {
       return response.json(null);
     }
@@ -37,13 +38,7 @@ class UserController {
   // Update
   async update(request, response) {
     try {
-      if (!request.params.id) {
-        return response.status(400).json({
-          errors: ['Missing user ID.'],
-        });
-      }
-
-      const user = await User.findByPk(request.params.id);
+      const user = await User.findByPk(request.userId);
 
       if (!user) {
         return response.status(400).json({
@@ -52,7 +47,8 @@ class UserController {
       }
 
       const newData = await user.update(request.body);
-      return response.json(newData);
+      const { id, name, email } = newData;
+      return response.json({ id, name, email });
     } catch (e) {
       return response.status(400).json({
         errors: e.errors.map((err) => err.message),
@@ -63,13 +59,7 @@ class UserController {
   // Delete
   async delete(request, response) {
     try {
-      if (!request.params.id) {
-        return response.status(400).json({
-          errors: ['Missing user ID.'],
-        });
-      }
-
-      const user = await User.findByPk(request.params.id);
+      const user = await User.findByPk(request.userId);
 
       if (!user) {
         return response.status(400).json({
@@ -78,7 +68,7 @@ class UserController {
       }
 
       await user.destroy();
-      return response.json(user);
+      return response.json(null);
     } catch (e) {
       return response.status(400).json({
         errors: e.errors.map((err) => err.message),
