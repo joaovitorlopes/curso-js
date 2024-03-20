@@ -13,3 +13,5 @@
 # sequelize commands:
 - "npx sequelize migration:create --name=NAME" to create an migration
 - "npx sequelize db:migrate" to send migration
+- "npx sequelize seed:generate --name NAME" to create seeds
+- "npx sequelize db:seed:all" to send seeds
