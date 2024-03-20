@@ -9,6 +9,7 @@
 - npm i sequelize-cli --save-dev
 - npm i bcryptjs
 - npm i jsonwebtoken
+- npm i multer (file upload)
 
 # sequelize commands:
 - "npx sequelize migration:create --name=NAME" to create an migration
