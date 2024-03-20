@@ -6,7 +6,7 @@ import loginRequired from '../middlewares/loginRequired';
 const router = new Router();
 
 // Remove from application
-router.get('/', loginRequired, userController.index); // List users
+// router.get('/', loginRequired, userController.index); // List users
 // router.get('/:id', userController.show); // List user
 
 router.post('/', userController.store);
