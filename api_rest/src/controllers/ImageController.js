@@ -17,13 +17,7 @@ class ImageController {
         const { originalname, filename } = request.file;
         const { student_id } = request.body;
         const image = await Image.create({ originalname, filename, student_id });
-        const { id } = image;
-        return response.json({
-          id,
-          originalname,
-          filename,
-          student_id,
-        });
+        return response.json(image);
       } catch (e) {
         return response.status(400).json({
           errors: ['Student does not exist.'],
